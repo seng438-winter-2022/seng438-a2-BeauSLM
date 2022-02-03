@@ -1,0 +1,105 @@
+SENG438 - Assignment 2 - Quick Notes :
+
+Link to assignment 2 description Markdown :
+https://github.com/seng438-winter-2022/seng438-a2-BeauSLM/blob/main/Assignment2.md
+
+- Create a Java Project
+- The project should use Java 8 as its development environment.
+- Project name JFreeChart
+- Add external libraries(Jars) the jfreechart-1.0.19.jar from the artifacts folder.
+- Add external library lib/jMock from the artifacts folder
+-We need to develop JUnits using JUnit 4.
+
+All members should be able to answer all questions during the demo.
+
+Classes to be tested :
+org.free.data.Range         : 15 methods
+org.free.data.DataUtilities : 5 methods
+
+Use JavaDoc to explore the specifications of these classes, and use the method Summaries
+in order to create the Unit Tests.
+
+For DataUtilities we are required to utilize Mocking 
+Some methods use interfaces Values2D and KeyedValues.
+Since methhods take in interfaces as paremeters,
+we will not know how the inherited classes may function.
+Mocking allows us to return any values/throw any exception.
+Disccuss in the report the drawbacks of this approach.
+
+org.free.data.Range classes to test (5/15) : 
+
+We chose the following classes to Test :
+
+getLowerBound() :
+
+	Description : Returns the lower bound for the range.
+	Returns     : The lower bound.
+
+getLength() :
+
+	Description : Returns the length of the range.
+	Returns     : The length
+	Parameters  : None.
+
+getUpperBound() :
+
+	Description : Returns the lower bound for the range
+	Return      : The upper bound
+	Parameters  : None
+
+shift(Range base, doube delta) :
+
+	Description : Shifts the range by the specified amount.
+	Parameters:
+	base - the base range (null not permitted).
+	Return      :  A new range
+
+toString() : 
+	
+	Description : Returns a string representation of this Range.
+	Returns     : A String "Range[lower,upper]" where lower=lower range and upper=upper range.
+
+Notes for Range Test :
+
+Test Integers, Negative , Positive Numbers, Combination, Give Lower Bound, as upper Bound,
+Give Higher number as Lower Bound, Max Float, Min Float, test NULL values.
+
+org.jfree.data.DataUtilities (5/9) :
+
+calculateColumnTotal(Values2D data, int column) :
+	
+	Description : Returns the total of the values in one column of the supplied data table.
+	Parameter   :  data - the table of values (null not permitted).
+		       column - the column index (zero-based).
+	Returns     : The total of the values in the specified column.
+
+calculateColumnTotal(Values2D data, int column, int[] validRows) :
+
+	Description : Returns the total of the values in one column of the supplied data table by taking only the row numbers in the array into account.
+	Parameters  : data - the table of values (null not permitted).
+		      column - the column index (zero-based).
+		      validRows - the array with valid rows (zero-based).
+	Returns     : The total of the valid values in the specified column.
+
+calculateRowTotal(Values2D data, int row) :
+	
+	Description : Returns the total of the values in one row of the supplied data table.
+	Parameter   : data - the table of values (null not permitted).
+		      row - the row index (zero-based).
+	Returns     : The total of the values in the specified row.
+
+calculateRowTotal(Values2D data, int row, int[] validCols) :
+
+	Description : Returns the total of the values in one row of the supplied data table by taking only the column numbers in the array into account.
+	Parameters  : data - the table of values (null not permitted).
+		      row - the row index (zero-based).
+		      validCols - the array with valid cols (zero-based).
+	Returns     : Returns the total of the values in one row of the supplied data table by taking only the column numbers in the array into account.
+
+equal(double[][] a, double[][] b) :
+	
+	Description : Tests two arrays for equality. To be considered equal, the arrays must have exactly the same dimensions, and the values in each array 
+		      must also match (two values that are both NaN or both INF are considered equal in this test).
+	Parameters  : a - the first array (null permitted).
+		      b - the second array (null permitted).
+	Returns     : A boolean.
