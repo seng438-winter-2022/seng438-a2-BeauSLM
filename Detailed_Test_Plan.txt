@@ -1,0 +1,11 @@
+Through reading the requirements for each of the chosen methods to be tested, 
+we have decided upon each method being tested based on 3 parameters. The first
+will be to use boundary values for the return values, this often results in
+the maximum and minimum values for the data types that are returned by each method.
+Following the two max. and min. tests, a test will be conducted to prove that the 
+method is presumably functional for any values between the minimum and maximum. 
+
+Methods that contain paramter inputs, for example the method 
+calculateColumnTotal(Values2D data, int column), will require extra tests that ensure the 
+inputs are congruent with eahcother and if a parameter is out of bounds the application will 
+not continue to calculate results. 
