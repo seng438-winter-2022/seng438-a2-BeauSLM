@@ -1,0 +1,74 @@
+Based on the chosen tests and test development plan, these are the following proposed
+test cases. The boundaries for max and min must be discussed in greater detail.
+
+**getLowerBound() Tests: **
+
+-testLowestBound: 
+	- setup exampleRange = new Range( Double.longBitsToDouble(0x1L), 0)
+	- getLowerBound()
+	- ensure that the returned value equals Double.longBitsToDouble(0x1L)
+
+-testHighestBound:
+	- setup exampleRange = new 
+	Range( Double.longBitsToDouble(0x7fefffffffffffffL), Double.longBitsToDouble(0x7fefffffffffffffL))
+	- getLowerBound()	
+	- ensure that the result equals  Double.longBitsToDouble(0x7fefffffffffffffL). 
+
+-testMedianValue:
+	- setup exampleRange = new Range(0, 1)
+	- getLowerBound()
+	- ensure the return value equals 0. 
+
+
+
+
+
+**getUpperBound() Tests: **
+
+-testLowestBound: 
+	- setup exampleRange = new 
+		Range( Double.longBitsToDouble(0x1L), Double.longBitsToDouble(0x1L))
+	- getUpperBound()
+	- ensure that the returned value equals Double.longBitsToDouble(0x1L)
+
+-testHighestBound:
+	- setup exampleRange = new 
+		Range( 0, Double.longBitsToDouble(0x7fefffffffffffffL))
+	- getUpperBound()	
+	- ensure that the result equals  Double.longBitsToDouble(0x7fefffffffffffffL). 
+
+-testMedianValue:
+	- setup exampleRange = new Range(-1, 0)
+	- getUpperBound()
+	- ensure the return value equals 0. 
+
+
+
+**getLength() Tests: **
+
+-testSmallestLength:
+	-setup exampleRange = new Range(0,0)
+	-getLength()
+	-ensure return value is 0. 
+
+-testLargestImpossibleLength:
+	-setup exampleRange = new 
+		Range(Double.longBitsToDouble(0x1L), Double.longBitsToDouble(0x7fefffffffffffffL)
+	-getLength()
+	-ensure the return value is Double.longBitsToDouble(0x7fefffffffffffffL)x2
+		This test should fail, as the length is larger than a double can be.
+ 
+-testLargestPossibleLength:
+	-setup exampleRange = new 
+		Range(0, Double.longBitsToDouble(0x7fefffffffffffffL)
+	-getLength()
+	-ensure the return value is Double.longBitsToDouble(0x7fefffffffffffffL)
+ 
+
+-testMedianLength:
+	-setup exampleRange = new Range(-100, 100)
+	-getLength()
+	-ensure result is equal to 200.
+
+
+
