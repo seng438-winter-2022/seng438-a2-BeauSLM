@@ -12,7 +12,7 @@ public class RangeTest {
     	exampleRange = new Range(-1, 1);
     }
 
-    //Shift Tests
+    //Shift Tests Starts
     @Test
     public void centralValueShouldBeZero() {
         assertEquals("The central value of -1 and 1 should be 0",
@@ -69,13 +69,18 @@ public class RangeTest {
     	assertEquals("The upper bound of -2 and 2 after shift of 0 should be 2.0", 2.0, shiftRange.getUpperBound(), 0.1);
     }
     
-    //End of shift Tests
-    
     @Test(expected = IllegalArgumentException.class)
-    public void nullObjectShiftObjectCheck() {
+    public void nullRangeShiftCheck() {
     	Range shiftRange = null;
     	double delta = 2.0;
     	Range.shift(shiftRange, delta);
+    }
+    //Shift Tests end
+    
+    //toString test
+    @Test public void toStringCheck() {
+    	Range testRange = new Range(-5.0, 5.0);
+    	assertEquals("Expected toString result was not met. ", "Range[-5.0,5.0]",testRange.toString());
     }
     
     @After

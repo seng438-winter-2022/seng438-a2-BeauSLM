@@ -70,8 +70,28 @@ test cases. The boundaries for max and min must be discussed in greater detail.
 	-getLength()
 	-ensure result is equal to 200.
 
-- shift(Range baase, double delta) : 
+- shift(Range baase, double delta) tests :
+ 
 	- pass null Range to the function
-	- pass 0 delta, it shouldn't shift the range
-	- pass negative delta, it should shift the range left wise
-	- pass positive delta, it should shift the range right wise
+		Must return illegal argument exception
+	- pass 0 delta
+		It shouldn't shift the range
+	- pass negative delta
+		It should shift the lower and upper bound of range left wise by absolute value of delta
+	- pass positive delta, 
+		it should shift the lower and upper bound of the range right wise
+
+- toString() :
+	create a new Range object, and test if the function toString returns a function that has 
+	the form of : Range[lower,upper]
+
+- equal(double[][] a, double[][] b) tests:
+	- pass arrays that are equal
+		Result should be True
+	- pass arrays that are not equal
+		Result should be False
+	- pass arrays that are both null
+		Result should be True
+	- pass one array that is null and one that isn't.
+		Result should be False
+	
