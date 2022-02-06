@@ -70,5 +70,8 @@ test cases. The boundaries for max and min must be discussed in greater detail.
 	-getLength()
 	-ensure result is equal to 200.
 
-
-
+- shift(Range baase, double delta) : 
+	- pass null Range to the function
+	- pass 0 delta, it shouldn't shift the range
+	- pass negative delta, it should shift the range left wise
+	- pass positive delta, it should shift the range right wise
