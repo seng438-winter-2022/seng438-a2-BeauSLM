@@ -144,7 +144,7 @@ public class RangeTest {
     //getLength test for median length value
     @Test
 	public void medianLengthValueShouldBeTwoHundred() {
-        exampleRange = new Range(-100, 100);
+        Range exampleRange = new Range(-100, 100);
 		assertEquals("The length between the range of -100 and 100 should be 200",200,
 				exampleRange.getLength(), .000000001d);
 	}
@@ -152,7 +152,7 @@ public class RangeTest {
     //getLength test for smallest length value
     @Test
     public void smallestLengthValueShouldBeZero() {
-        exampleRange = new Range(0, 0);
+        Range exampleRange = new Range(0, 0);
         assertEquals("The length between 0 and 0 should be 0",
         0, exampleRange.getLength(), .000000001d);
     }
