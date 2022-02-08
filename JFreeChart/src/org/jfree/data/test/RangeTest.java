@@ -3,21 +3,74 @@ package org.jfree.data.test;
 import static org.junit.Assert.*; import org.jfree.data.Range; import org.junit.*;
 
 public class RangeTest {
-    private Range exampleRange;
 
-
-
-    @Before
-    public void setUp() throws Exception { 
-    	exampleRange = new Range(-1, 1);
-    }
-
+    //getLowerBound Test
     @Test
-    public void centralValueShouldBeZero() {
-        assertEquals("The central value of -1 and 1 should be 0",
-        0, exampleRange.getCentralValue(), .000000001d);
+    public void testHighestLowerBound() {
+    	Range uppestBoundRange = new Range(Double.longBitsToDouble(0x7fefffffffffffffL), Double.longBitsToDouble(0x7fefffffffffffffL));
+    	assertEquals("The lower bound of (Double.longBitsToDouble(0x7fefffffffffffffL), Double.longBitsToDouble(0x7fefffffffffffffL) "
+    			+ " should be equal to Double.longBitsToDouble(0x7fefffffffffffffL)", Double.longBitsToDouble(0x7fefffffffffffffL),
+    			uppestBoundRange.getLowerBound(), .0000000001d ); 
     }
     
+    //getLowerBound Test
+    @Test
+    public void testLowestLowerBound() {
+    	Range lowestBoundRange = new Range(Double.longBitsToDouble(-0x7fefffffffffffffL), 0);
+    	assertEquals("The lower bound of (Double.longBitsToDouble(-0x7fefffffffffffffL), 0) should be equal to Double.longBitsToDouble(-0x7fefffffffffffffL)",
+    			Double.longBitsToDouble(-0x7fefffffffffffffL), lowestBoundRange.getLowerBound(), .0000000001d);
+    }
+    
+    //getLowerBound Test
+    @Test
+    public void testMedianLowerBound() {
+    	Range medianBoundRange = new Range(0, 1);
+    	assertEquals("The lower bound od (0, 1) should be 0", 0, medianBoundRange.getLowerBound(), .0000000001d); 
+    }
+    
+    //getUpperBound Test
+    @Test
+    public void testHighestUpperBound() {
+    	Range uppestBoundRange = new Range(0, Double.longBitsToDouble(0x7fefffffffffffffL));
+    	assertEquals("The lower bound of (0, Double.longBitsToDouble(0x7fefffffffffffffL) "
+    			+ " should be equal to Double.longBitsToDouble(0x7fefffffffffffffL)", Double.longBitsToDouble(0x7fefffffffffffffL),
+    			uppestBoundRange.getUpperBound(), .0000000001d ); 
+    }
+    
+    //getUpperBound Test
+    @Test
+    public void testLowestUpperBound() {
+    	Range lowestBoundRange = new Range(Double.longBitsToDouble(-0x7fefffffffffffffL), Double.longBitsToDouble(-0x7fefffffffffffffL));
+    	assertEquals("The lower bound of (Double.longBitsToDouble(-0x7fefffffffffffffL), Double.longBitsToDouble(-0x7fefffffffffffffL)) should be equal to Double.longBitsToDouble(-0x7fefffffffffffffL)",
+    			Double.longBitsToDouble(-0x7fefffffffffffffL), lowestBoundRange.getUpperBound(), .0000000001d);
+    }
+    
+    //getUpperBound Test
+    @Test
+    public void testMedianUpperBound() {
+    	Range medianBoundRange = new Range(0, 1);
+    	assertEquals("The lower bound of (0, 1) should be 1", 1, medianBoundRange.getUpperBound(), .0000000001d); 
+    }
+    
+    //getLength Test
+    @Test
+    public void testLargestImpossibleLength() {
+    	Range longestNotPossibleLength = new Range(Double.longBitsToDouble(-0x7fefffffffffffffL), Double.longBitsToDouble(0x7fefffffffffffffL));
+    	assertEquals("The length of the range (Double.longBitsToDouble(-0x7fefffffffffffffL), Double.longBitsToDouble(0x7fefffffffffffffL))"
+    			+ "will be equal to 2 X(Double.longBitsToDouble(0x7fefffffffffffffL))", (2 * Double.longBitsToDouble(0x7fefffffffffffffL)), 
+    				longestNotPossibleLength.getLength(), .0000000001d);
+    }
+    
+    //getLength Test
+    @Test
+    public void testLargestPossibleLength() {
+    	Range longestPossibleLength = new Range(0, Double.longBitsToDouble(0x7fefffffffffffffL));
+    	assertEquals("The length of the range (0, Double.longBitsToDouble(0x7fefffffffffffffL)), will be equal to "
+    		+ "Double.longBitsToDouble(0x7fefffffffffffffL)", Double.longBitsToDouble(0x7fefffffffffffffL), 
+    			longestPossibleLength.getLength(), .0000000001d); 
+    }
+    
+   
     //Shift Test
     @Test
     public void NegativeShiftValueLowerBoundCheck() {
@@ -26,6 +79,8 @@ public class RangeTest {
     	Range.shift(shiftRange, delta);
     	assertEquals("The lower bound of -2 and 2 after shift of -2.5 should be -4.5", -4.5, shiftRange.getLowerBound(), 0.1);
     }
+    
+
     
     //Shift Test
     @Test
