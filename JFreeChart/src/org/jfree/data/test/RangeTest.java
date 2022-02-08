@@ -86,6 +86,22 @@ public class RangeTest {
     	assertEquals("Expected toString result was not met. ", "Range[-5.0,5.0]",testRange.toString());
     }
     
+    //getLength test for median length value
+    @Test
+	public void medianLengthValueShouldBeTwoHundred() {
+        exampleRange = new Range(-100, 100);
+		assertEquals("The length between the range of -100 and 100 should be 200",200,
+				exampleRange.getLength(), .000000001d);
+	}
+    
+    //getLength test for smallest length value
+    @Test
+    public void smallestLengthValueShouldBeZero() {
+        exampleRange = new Range(0, 0);
+        assertEquals("The length between 0 and 0 should be 0",
+        0, exampleRange.getLength(), .000000001d);
+    }
+    
     @After
     public void tearDown() throws Exception {
     }
