@@ -85,6 +85,8 @@ test cases. The boundaries for max and min must be discussed in greater detail.
 	create a new Range object, and test if the function toString returns a function that has 
 	the form of : Range[lower,upper]
 
+Data Utilities Test Plan :
+
 - equal(double[][] a, double[][] b) tests:
 	- pass arrays that are equal
 		Result should be True
