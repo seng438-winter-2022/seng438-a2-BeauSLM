@@ -26,6 +26,33 @@ public class DataUtilitiesTest {
     	Assert.assertTrue("Expected result is True", actualResutl);
     }
     
+    //Test 2 unequal arrays
+     @Test  
+    public void checkNotEqualArrays() {
+         double a[][] = {{1, 8, -2, 5}, {1, 16, 13, 2}, {13, -7, 8, 4}};
+         double b[][] = {{1, 8, -2, 5}, {1, 7, 13, 2}, {13, -7, 8, 4}};
+         boolean actualResult = DataUtilities.equal(a, b);
+         Assert.assertFalse("Expected result is False", actualResult);
+     }
+    
+    //test two null arrays
+    @Test  
+    public void checkNullArrays() {
+         double a[][] = null;
+         double b[][] = null;
+         boolean actualResult = DataUtilities.equal(a, b);
+         Assert.assertTrue("Expected result is True", actualResult);
+     }
+    
+    //test one null array and one not null array
+    @Test  
+    public void checkNullWithNotNullArrays() {
+         double a[][] = null;
+         double b[][] = {{1, 8, -2, 5}, {1, 7, 13, 2}, {13, -7, 8, 4}};
+         boolean actualResult = DataUtilities.equal(a, b);
+         Assert.assertFalse("Expected result is False", actualResult);
+     }
+    
     @After
     public void tearDown() throws Exception {
     }
