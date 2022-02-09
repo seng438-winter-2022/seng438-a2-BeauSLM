@@ -96,4 +96,12 @@ Data Utilities Test Plan :
 		Result should be True
 	- pass one array that is null and one that isn't.
 		Result should be False
+
+- createNumberArray2D(double [][]): Number [][] test: 
+	-pass null array
+		Should not be accepted
+	-pass incorrect object
+		Invalid Parameter Exception
+	-pass in a doubles array
+		Returns a corressponding Number array
 	
