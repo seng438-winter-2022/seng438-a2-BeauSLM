@@ -99,9 +99,7 @@ Data Utilities Test Plan :
 
 - createNumberArray2D(double [][]): Number [][] test: ***HANIYA WILL DO THESE
 	-pass null array
-		Should not be accepted
-	-pass incorrect object
-		Invalid Parameter Exception
+		Should not be accepted, throws an exception
 	-pass in a doubles array
 		Returns a corressponding Number array
 	
