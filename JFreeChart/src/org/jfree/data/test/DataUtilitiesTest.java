@@ -150,6 +150,59 @@ public class DataUtilitiesTest {
         // tear-down: NONE in this test method
     }
     
+    //passing a null object into createNumberArray2D
+    @Test
+	public void nullObjectTo2DArrayTest() {
+		boolean testPassed = false;
+		
+		try {
+			DataUtilities.createNumberArray2D(null);
+		} catch (Exception e) {
+			testPassed = true;
+		} finally {
+			assertEquals("Method should throw exception.", true, testPassed);
+		}
+	}
+    
+    //pass an empty doubles array
+    @Test
+	public void empty2DArrayTest() {
+		double [][] test = {};
+		Number [][] expected = {};
+		Number [][] actual = DataUtilities.createNumberArray2D(test);
+		assertArrayEquals("The Number 2D array produce by DataUtilities does not match the empty, expected Number 2D Array", expected, actual);
+	}
+    
+  //testing more than 17 decimal places which a Number class can't handle
+    @Test
+	public void moreThan17DecimalPlaces2DArrayTest() {
+		double [][] test = {{15.1234567890123456789}};
+		Number [][] expected = {{15.1234567890123456789}};
+		Number [][] actual = DataUtilities.createNumberArray2D(test);
+		assertArrayEquals("The Number 2D array produce by DataUtilities does not match the expected Number 2D Array with more than"
+				+ "17 decimal places", expected, actual);
+	}
+    
+    //passing a ten by one double array to createNumberArray2D
+    @Test
+	public void tenByOne2DArrayTest() {
+		double [][] test = {{15.78282},{-15.78282},{15.78282},{15.78282},{15.78282},{15.78282},{15.78282},{15.78282},{15.78282},{15.78282}};
+		Number [][] expected = {{15.78282},{-15.78282},{15.78282},{15.78282},{15.78282},{15.78282},{15.78282},{15.78282},{15.78282},{15.78282}};
+		Number [][] actual = DataUtilities.createNumberArray2D(test);
+		assertArrayEquals("The Number 2D array produce by DataUtilities does not match the expected ten by one Number 2D Array"
+	, expected, actual);
+	}
+    
+    //passing a one by ten double array to createNumberArray2D
+    @Test
+	public void oneByTen2DArrayTest() {
+		double [][] test = {{15.78282,-15.78282,15.78282,15.78282,15.78282,15.78282,15.78282,15.78282,15.78282,15.78282}};
+		Number [][] expected = {{15.78282,-15.78282,15.78282,15.78282,15.78282,15.78282,15.78282,15.78282,15.78282,15.78282}};
+		Number [][] actual = DataUtilities.createNumberArray2D(test);
+		assertArrayEquals("The Number 2D array produce by DataUtilities does not match the expected one by ten Number 2D Array"
+	, expected, actual);
+	}
+    
 
     @After
     public void tearDown() throws Exception {
