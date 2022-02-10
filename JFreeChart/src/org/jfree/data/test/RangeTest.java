@@ -141,6 +141,7 @@ public class RangeTest {
     	assertEquals("Expected toString result was not met. ", "Range[-5.0,5.0]",testRange.toString());
     }
     
+    //Haniya
     //getLength test for median length value
     @Test
 	public void medianLengthValueShouldBeTwoHundred() {
@@ -149,6 +150,7 @@ public class RangeTest {
 				exampleRange.getLength(), .000000001d);
 	}
     
+    //Haniya
     //getLength test for smallest length value
     @Test
     public void smallestLengthValueShouldBeZero() {
