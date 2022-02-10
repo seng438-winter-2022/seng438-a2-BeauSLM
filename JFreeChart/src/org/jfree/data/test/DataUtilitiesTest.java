@@ -56,6 +56,7 @@ public class DataUtilitiesTest {
          Assert.assertFalse("Expected result is False", actualResult);
      }
     
+    //calculate Column Test(Beau) - Values
     @Test
     public void calculateColumnTotalForTwoValues() {
         // setup
@@ -78,6 +79,7 @@ public class DataUtilitiesTest {
         // tear-down: NONE in this test method
     }
     
+    //calculate column test (Apostolos) - Values
     @Test
     public void calculateColumnTotalForThreeNegativeValues() {
         // setup
@@ -102,6 +104,8 @@ public class DataUtilitiesTest {
         // tear-down: NONE in this test method
     }
     
+    
+    //Calculate column test (Beau) - Rows
     @Test
     public void calculateColumnTotalForTwoValidRows() {
         // setup
@@ -126,7 +130,31 @@ public class DataUtilitiesTest {
         assertEquals(result, 10.0, .000000001d);
         // tear-down: NONE in this test method
     }
-
+    
+    //Calculate Rows (Beau) - Values
+    @Test
+    public void calculateRowTotalForTwoValues() {
+        // setup
+        Mockery mockingContext = new Mockery();
+        final Values2D values = mockingContext.mock(Values2D.class);
+        mockingContext.checking(new Expectations() {
+            {
+                one(values).getColumnCount();
+                will(returnValue(2));
+                one(values).getValue(0, 0);
+                will(returnValue(-17.5));
+                one(values).getValue(0, 1);
+                will(returnValue(-12.5));
+            }
+        });
+        // exercise
+        double result = DataUtilities.calculateRowTotal(values, 0);
+        // verify
+        assertEquals(result, -30.0, .000000001d);
+        // tear-down: NONE in this test method
+    }
+    
+    //Calculate Rows (Apostolos) Values
     @Test
     public void calculateRowTotalForTwoNegativeValues() {
         // setup
@@ -142,13 +170,15 @@ public class DataUtilitiesTest {
                 will(returnValue(-12.5));
             }
         });
-        // exercise 
+        // exercise
         double result = DataUtilities.calculateRowTotal(values, 0);
         // verify
         assertEquals(result, -30.0, .000000001d);
         // tear-down: NONE in this test method
     }
     
+    
+    //Calculate Rows (Beau) for Columns
     @Test
     public void calculateRowTotalForTwoValidColumns() {
         // setup
@@ -174,6 +204,7 @@ public class DataUtilitiesTest {
         // tear-down: NONE in this test method
     }
     
+    //calculate Row Total with a null Array (Apostolos) - Exception
     @Test(expected=Exception.class)
     public void calculateRowTotalNullArray() {
         // setup
@@ -196,7 +227,6 @@ public class DataUtilitiesTest {
         // verify
         //exception expected
     }
-    
     
     //passing a null object into createNumberArray2D
     @Test
