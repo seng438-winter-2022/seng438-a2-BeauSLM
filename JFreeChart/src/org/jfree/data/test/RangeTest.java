@@ -4,8 +4,11 @@ import static org.junit.Assert.*; import org.jfree.data.Range; import org.junit.
 
 public class RangeTest {
 
+	/*By testing Highest, Lowest, and 0 for each boundary of a range, 
+		it is safe to assume if the tests are successful Range.java is applicable for any 
+			(Double, Double) Range. */
     //getLowerBound Test - Josh
-    @Test
+    @Test //Highest Lower Boundary that can be attained  (non-infinite)
     public void testHighestLowerBound() {
     	Range uppestBoundRange = new Range(Double.longBitsToDouble(0x7fefffffffffffffL), Double.longBitsToDouble(0x7fefffffffffffffL));
     	assertEquals("The lower bound of (Double.longBitsToDouble(0x7fefffffffffffffL), Double.longBitsToDouble(0x7fefffffffffffffL) "
@@ -14,7 +17,7 @@ public class RangeTest {
     }
     
     //getLowerBound Test - Josh
-    @Test
+    @Test //Lowest Lower Boundary that can be attained (non-infinite)
     public void testLowestLowerBound() {
     	Range lowestBoundRange = new Range(Double.longBitsToDouble(-0x7fefffffffffffffL), 0);
     	assertEquals("The lower bound of (Double.longBitsToDouble(-0x7fefffffffffffffL), 0) should be equal to Double.longBitsToDouble(-0x7fefffffffffffffL)",
@@ -22,14 +25,17 @@ public class RangeTest {
     }
     
     //getLowerBound Test - Josh
-    @Test
+    @Test //A median number (0) that serves as the lower bound of a range 
     public void testMedianLowerBound() {
     	Range medianBoundRange = new Range(0, 1);
     	assertEquals("The lower bound od (0, 1) should be 0", 0, medianBoundRange.getLowerBound(), .0000000001d); 
     }
     
+	/*By testing Highest, Lowest, and 0 for each boundary of a range, 
+	it is safe to assume if the tests are successful Range.java is applicable for any 
+		(Double, Double) Range. */
     //getUpperBound Test - Josh
-    @Test
+    @Test //Highest Upper Boundary that is possible (non-infinite)
     public void testHighestUpperBound() {
     	Range uppestBoundRange = new Range(0, Double.longBitsToDouble(0x7fefffffffffffffL));
     	assertEquals("The lower bound of (0, Double.longBitsToDouble(0x7fefffffffffffffL) "
@@ -38,7 +44,7 @@ public class RangeTest {
     }
     
     //getUpperBound Test - Josh
-    @Test
+    @Test //Lowest Upper Boundary that is possible (non-infinite)
     public void testLowestUpperBound() {
     	Range lowestBoundRange = new Range(Double.longBitsToDouble(-0x7fefffffffffffffL), Double.longBitsToDouble(-0x7fefffffffffffffL));
     	assertEquals("The lower bound of (Double.longBitsToDouble(-0x7fefffffffffffffL), Double.longBitsToDouble(-0x7fefffffffffffffL)) should be equal to Double.longBitsToDouble(-0x7fefffffffffffffL)",
@@ -46,14 +52,20 @@ public class RangeTest {
     }
     
     //getUpperBound Test - Josh
-    @Test
+    @Test //A median value (0) to be the upper bound of a range
     public void testMedianUpperBound() {
     	Range medianBoundRange = new Range(0, 1);
     	assertEquals("The lower bound of (0, 1) should be 1", 1, medianBoundRange.getUpperBound(), .0000000001d); 
     }
     
+    
+    /*
+     * Testing max, min, and illegal ranges will provide a basis for the method to prove its functionality
+     * is as expected based on the JavaDocs
+     */
     //getLength Test - Josh
-    @Test
+    @Test //This test creates a Range that is greater than the largest rational double and if Range.java does not check for 
+    		//Ranges out of the scope of a Double this test will fail. 
     public void testLargestImpossibleLength() {
     	Range longestNotPossibleLength = new Range(Double.longBitsToDouble(-0x7fefffffffffffffL), Double.longBitsToDouble(0x7fefffffffffffffL));
     	assertEquals("The length of the range (Double.longBitsToDouble(-0x7fefffffffffffffL), Double.longBitsToDouble(0x7fefffffffffffffL))"
@@ -62,7 +74,7 @@ public class RangeTest {
     }
     
     //getLength Test - Josh
-    @Test
+    @Test //Largest length that is  possible using Double values
     public void testLargestPossibleLength() {
     	Range longestPossibleLength = new Range(0, Double.longBitsToDouble(0x7fefffffffffffffL));
     	assertEquals("The length of the range (0, Double.longBitsToDouble(0x7fefffffffffffffL)), will be equal to "
@@ -70,9 +82,30 @@ public class RangeTest {
     			longestPossibleLength.getLength(), .0000000001d); 
     }
     
+    //Haniya
+    @Test //getLength test for median length value
+	public void medianLengthValueShouldBeTwoHundred() {
+        Range exampleRange = new Range(-100, 100);
+		assertEquals("The length between the range of -100 and 100 should be 200",200,
+				exampleRange.getLength(), .000000001d);
+	}
+    
+    //Haniya
+    @Test //getLength test for smallest length value
+    public void smallestLengthValueShouldBeZero() {
+        Range exampleRange = new Range(0, 0);
+        assertEquals("The length between 0 and 0 should be 0",
+        0, exampleRange.getLength(), .000000001d);
+    }
+    
    
+    
+    /*
+     * Testing 0, positive, and negative shifts with random values will provide a basis if shifting is done correctly
+     * Using NULL delta values expects an exception to be thrown
+     */
     //Shift Test
-    @Test
+    @Test //negative shift correctly changes the Lower bound 
     public void NegativeShiftValueLowerBoundCheck() {
     	Range shiftRange = new Range(-2, 2);
     	double delta = -2.5;
@@ -83,7 +116,7 @@ public class RangeTest {
 
     
     //Shift Test
-    @Test
+    @Test //negative shift correctly changes the upper bound 
     public void negativeShiftValueUpperBoundCheck() {
     	Range shiftRange = new Range(-2, 2);
     	double delta = -2.5;
@@ -92,7 +125,7 @@ public class RangeTest {
     }
 
     //Shift Test
-    @Test
+    @Test //positive shift correctly changes the lower bound 
     public void positiveShiftValueLowerBoundCheck() {
     	Range shiftRange = new Range(-2, 2);
     	double delta = 2.0;
@@ -101,7 +134,7 @@ public class RangeTest {
     }
 
     //Shift Test
-    @Test
+    @Test //positive shift correctly changes the upper bound 
     public void positiveShiftValueUpperBoundCheck() {
     	Range shiftRange = new Range(-2, 2);
     	double delta = 2.0;
@@ -110,7 +143,7 @@ public class RangeTest {
     }
     
     //Shift Test
-    @Test
+    @Test //shifting with delta value 0 will not change the range bounds
     public void zeroShiftValueLowerBoundCheck() {
     	Range shiftRange = new Range(-2, 2);
     	double delta = 0.0;
@@ -119,7 +152,7 @@ public class RangeTest {
     }
 
     //Shift Test
-    @Test
+    @Test //shifting with delta = 0 will not change the range bounds
     public void zeroShiftValueUpperBoundCheck() {
     	Range shiftRange = new Range(-2, 2);
     	double delta = 0.0;
@@ -128,36 +161,24 @@ public class RangeTest {
     }
     
     //Shift Test
-    @Test(expected = IllegalArgumentException.class)
+    @Test(expected = IllegalArgumentException.class) //delta == null should throw an exception
     public void nullRangeShiftCheck() {
     	Range shiftRange = null;
     	double delta = 2.0;
     	Range.shift(shiftRange, delta);
     }
     
-    //toString test
-    @Test public void toStringCheck() {
+    
+    
+    /*toString test - simple functionality of this method merits less testing, so the conversion of a positive and negative double 
+    	is all that  is needed */
+    @Test //test that the toString method properly converts a double to a string and formats as described
+    public void toStringCheck() {
     	Range testRange = new Range(-5.0, 5.0);
     	assertEquals("Expected toString result was not met. ", "Range[-5.0,5.0]",testRange.toString());
     }
     
-    //Haniya
-    //getLength test for median length value
-    @Test
-	public void medianLengthValueShouldBeTwoHundred() {
-        Range exampleRange = new Range(-100, 100);
-		assertEquals("The length between the range of -100 and 100 should be 200",200,
-				exampleRange.getLength(), .000000001d);
-	}
     
-    //Haniya
-    //getLength test for smallest length value
-    @Test
-    public void smallestLengthValueShouldBeZero() {
-        Range exampleRange = new Range(0, 0);
-        assertEquals("The length between 0 and 0 should be 0",
-        0, exampleRange.getLength(), .000000001d);
-    }
     
     @After
     public void tearDown() throws Exception {

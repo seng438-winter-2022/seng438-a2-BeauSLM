@@ -250,6 +250,7 @@ public class DataUtilitiesTest {
         });
         int []arr = null;
         double result = DataUtilities.calculateColumnTotal(values, 0, arr);
+        // no teardown
     }
     
     //Haniya
