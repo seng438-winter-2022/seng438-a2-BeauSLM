@@ -1,5 +1,4 @@
 package org.jfree.data.test;
-import org.jfree.data.Range;
 
 import static org.junit.Assert.*;
 
