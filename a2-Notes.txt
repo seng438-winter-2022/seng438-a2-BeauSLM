@@ -47,7 +47,7 @@ getUpperBound() :
 	Return      : The upper bound
 	Parameters  : None
 
-shift(Range base, doube delta) :
+shift(Range base, double delta) :
 
 	Description : Shifts the range by the specified amount.
 	Parameters:

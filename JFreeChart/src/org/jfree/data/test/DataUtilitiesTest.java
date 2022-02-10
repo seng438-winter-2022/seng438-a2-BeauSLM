@@ -1,5 +1,4 @@
 package org.jfree.data.test;
-import org.jfree.data.Range;
 
 import static org.junit.Assert.*;
 
@@ -30,7 +29,7 @@ public class DataUtilitiesTest {
     	Assert.assertTrue("Expected result is True", actualResutl);
     }
     
-    //Test 2 unequal arrays
+    //Test 2 unequal arrays - Apostolos
      @Test  
     public void checkNotEqualArrays() {
          double a[][] = {{1, 8, -2, 5}, {1, 16, 13, 2}, {13, -7, 8, 4}};
@@ -104,31 +103,6 @@ public class DataUtilitiesTest {
         assertEquals(result, 10.0, .000000001d);
         // tear-down: NONE in this test method
     }
-    
-    @Test
-    public void calculateColumnTotalForThreeNegativeValues() {
-        // setup
-        Mockery mockingContext = new Mockery();
-        final Values2D values = mockingContext.mock(Values2D.class);
-        mockingContext.checking(new Expectations() {
-            {
-                one(values).getRowCount();
-                will(returnValue(3));
-                one(values).getValue(0, 0);
-                will(returnValue(-25.5));
-                one(values).getValue(1, 0);
-                will(returnValue(-53));
-                one(values).getValue(2, 0);
-                will(returnValue(-5));
-            }
-        });
-        // exercise 
-        double result = DataUtilities.calculateColumnTotal(values, 0);
-        // verify
-        assertEquals(result, -83.5, .000000001d);
-        // tear-down: NONE in this test method
-    }
-    
     
     //Calculate column test (Beau) - Rows
     @Test
@@ -262,12 +236,14 @@ public class DataUtilitiesTest {
 		try {
 			DataUtilities.createNumberArray2D(null);
 		} catch (Exception e) {
+			//exception was thrown
 			testPassed = true;
 		} finally {
 			assertEquals("Method should throw exception.", true, testPassed);
 		}
 	}
     
+    //Number is a serialized object we test. Holds any type of numbers you wish to pass. (Abstract -> java lang Interface)
     //Haniya
     //pass an empty doubles array
     @Test
@@ -282,6 +258,7 @@ public class DataUtilitiesTest {
   //testing more than 17 decimal places which a Number class can't handle
     @Test
 	public void moreThan17DecimalPlaces2DArrayTest() {
+    	//Last 2 digits get chopped - can't be stored.
 		double [][] test = {{15.1234567890123456789}};
 		Number [][] expected = {{15.12345678901234567}};
 		Number [][] actual = DataUtilities.createNumberArray2D(test);
@@ -304,6 +281,7 @@ public class DataUtilitiesTest {
     //passing a one by ten double array to createNumberArray2D
     @Test
 	public void oneByTen2DArrayTest() {
+    	
 		double [][] test = {{15.78282,-15.78282,15.78282,15.78282,15.78282,15.78282,15.78282,15.78282,15.78282,15.78282}};
 		Number [][] expected = {{15.78282,-15.78282,15.78282,15.78282,15.78282,15.78282,15.78282,15.78282,15.78282,15.78282}};
 		Number [][] actual = DataUtilities.createNumberArray2D(test);
@@ -311,6 +289,7 @@ public class DataUtilitiesTest {
 	, expected, actual);
 	}
     
+    //Calculate row Total (Beau) - Values
     @Test
     public void calculateRowTotalForThreeValues() {
         // setup
@@ -335,6 +314,7 @@ public class DataUtilitiesTest {
         // tear-down: NONE in this test method
     }
     
+    //calculate column (Beau) Values
     @Test
     public void calculateColumnTotalForThreeValues() {
         // setup
@@ -363,7 +343,32 @@ public class DataUtilitiesTest {
     public void tearDown() throws Exception {
     }
 
-    @AfterClass
+    //calculate column test (Apostolos) - Values
+	@Test
+	public void calculateColumnTotalForThreeNegativeValues() {
+	    // setup
+	    Mockery mockingContext = new Mockery();
+	    final Values2D values = mockingContext.mock(Values2D.class);
+	    mockingContext.checking(new Expectations() {
+	        {
+	            one(values).getRowCount();
+	            will(returnValue(3));
+	            one(values).getValue(0, 0);
+	            will(returnValue(-25.5));
+	            one(values).getValue(1, 0);
+	            will(returnValue(-53));
+	            one(values).getValue(2, 0);
+	            will(returnValue(-5));
+	        }
+	    });
+	    // exercise 
+	    double result = DataUtilities.calculateColumnTotal(values, 0);
+	    // verify
+	    assertEquals(result, -83.5, .000000001d);
+	    // tear-down: NONE in this test method
+	}
+
+	@AfterClass
     public static void tearDownAfterClass() throws Exception {
     }
 
