@@ -4,7 +4,7 @@ import static org.junit.Assert.*; import org.jfree.data.Range; import org.junit.
 
 public class RangeTest {
 
-    //getLowerBound Test
+    //getLowerBound Test - Josh
     @Test
     public void testHighestLowerBound() {
     	Range uppestBoundRange = new Range(Double.longBitsToDouble(0x7fefffffffffffffL), Double.longBitsToDouble(0x7fefffffffffffffL));
@@ -13,7 +13,7 @@ public class RangeTest {
     			uppestBoundRange.getLowerBound(), .0000000001d ); 
     }
     
-    //getLowerBound Test
+    //getLowerBound Test - Josh
     @Test
     public void testLowestLowerBound() {
     	Range lowestBoundRange = new Range(Double.longBitsToDouble(-0x7fefffffffffffffL), 0);
@@ -21,14 +21,14 @@ public class RangeTest {
     			Double.longBitsToDouble(-0x7fefffffffffffffL), lowestBoundRange.getLowerBound(), .0000000001d);
     }
     
-    //getLowerBound Test
+    //getLowerBound Test - Josh
     @Test
     public void testMedianLowerBound() {
     	Range medianBoundRange = new Range(0, 1);
     	assertEquals("The lower bound od (0, 1) should be 0", 0, medianBoundRange.getLowerBound(), .0000000001d); 
     }
     
-    //getUpperBound Test
+    //getUpperBound Test - Josh
     @Test
     public void testHighestUpperBound() {
     	Range uppestBoundRange = new Range(0, Double.longBitsToDouble(0x7fefffffffffffffL));
@@ -37,7 +37,7 @@ public class RangeTest {
     			uppestBoundRange.getUpperBound(), .0000000001d ); 
     }
     
-    //getUpperBound Test
+    //getUpperBound Test - Josh
     @Test
     public void testLowestUpperBound() {
     	Range lowestBoundRange = new Range(Double.longBitsToDouble(-0x7fefffffffffffffL), Double.longBitsToDouble(-0x7fefffffffffffffL));
@@ -45,14 +45,14 @@ public class RangeTest {
     			Double.longBitsToDouble(-0x7fefffffffffffffL), lowestBoundRange.getUpperBound(), .0000000001d);
     }
     
-    //getUpperBound Test
+    //getUpperBound Test - Josh
     @Test
     public void testMedianUpperBound() {
     	Range medianBoundRange = new Range(0, 1);
     	assertEquals("The lower bound of (0, 1) should be 1", 1, medianBoundRange.getUpperBound(), .0000000001d); 
     }
     
-    //getLength Test
+    //getLength Test - Josh
     @Test
     public void testLargestImpossibleLength() {
     	Range longestNotPossibleLength = new Range(Double.longBitsToDouble(-0x7fefffffffffffffL), Double.longBitsToDouble(0x7fefffffffffffffL));
@@ -61,7 +61,7 @@ public class RangeTest {
     				longestNotPossibleLength.getLength(), .0000000001d);
     }
     
-    //getLength Test
+    //getLength Test - Josh
     @Test
     public void testLargestPossibleLength() {
     	Range longestPossibleLength = new Range(0, Double.longBitsToDouble(0x7fefffffffffffffL));

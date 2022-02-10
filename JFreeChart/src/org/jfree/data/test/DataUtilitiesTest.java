@@ -230,6 +230,28 @@ public class DataUtilitiesTest {
         //exception expected
     }
     
+    //josh
+    @Test(expected=Exception.class)
+    public void calculateColumnNullRowsArray() {
+        // setup
+        Mockery mockingContext = new Mockery();
+        final Values2D values = mockingContext.mock(Values2D.class);
+        mockingContext.checking(new Expectations() {
+            {
+                one(values).getRowCount();
+                will(returnValue(3));
+                one(values).getValue(0, 0);
+                will(returnValue(72));
+                one(values).getValue(1, 0);
+                will(returnValue(1));
+                one(values).getValue(2, 0);
+                will(returnValue(5));
+            }
+        });
+        int []arr = null;
+        double result = DataUtilities.calculateColumnTotal(values, 0, arr);
+    }
+    
     //Haniya
     //passing a null object into createNumberArray2D
     @Test
