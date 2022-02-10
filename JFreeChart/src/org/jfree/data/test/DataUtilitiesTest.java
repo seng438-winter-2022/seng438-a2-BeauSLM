@@ -156,29 +156,6 @@ public class DataUtilitiesTest {
         // tear-down: NONE in this test method
     }
     
-    //Calculate Rows (Beau) - Values
-    @Test
-    public void calculateRowTotalForTwoValues() {
-        // setup
-        Mockery mockingContext = new Mockery();
-        final Values2D values = mockingContext.mock(Values2D.class);
-        mockingContext.checking(new Expectations() {
-            {
-                one(values).getColumnCount();
-                will(returnValue(2));
-                one(values).getValue(0, 0);
-                will(returnValue(-17.5));
-                one(values).getValue(0, 1);
-                will(returnValue(-12.5));
-            }
-        });
-        // exercise
-        double result = DataUtilities.calculateRowTotal(values, 0);
-        // verify
-        assertEquals(result, -30.0, .000000001d);
-        // tear-down: NONE in this test method
-    }
-    
     //Calculate Rows (Apostolos) Values
     @Test
     public void calculateRowTotalForTwoNegativeValues() {
