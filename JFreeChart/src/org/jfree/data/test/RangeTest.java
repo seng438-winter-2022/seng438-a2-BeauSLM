@@ -99,20 +99,13 @@ public class RangeTest {
     }
     
    
-<<<<<<< HEAD
-    
     /*
      * Testing 0, positive, and negative shifts with random values will provide a basis if shifting is done correctly
      * Using NULL delta values expects an exception to be thrown
      */
-    //Shift Test
+    //Shift Test - Apostolos
     @Test //negative shift correctly changes the Lower bound 
     public void NegativeShiftValueLowerBoundCheck() {
-=======
-    //Shift Test - Apostolos
-    @Test
-    public void negativeShiftValueLowerBoundCheck() {
->>>>>>> dbaad4ed3813d242942899a04e3765096e24d377
     	Range shiftRange = new Range(-2, 2);
     	double delta = -2.5;
     	Range.shift(shiftRange, delta);
@@ -121,13 +114,8 @@ public class RangeTest {
     
 
     
-<<<<<<< HEAD
-    //Shift Test
-    @Test //negative shift correctly changes the upper bound 
-=======
     //Shift Test - Apostolos
-    @Test
->>>>>>> dbaad4ed3813d242942899a04e3765096e24d377
+    @Test //negative shift correctly changes the upper bound 
     public void negativeShiftValueUpperBoundCheck() {
     	Range shiftRange = new Range(-2, 2);
     	double delta = -2.5;
@@ -135,13 +123,9 @@ public class RangeTest {
     	assertEquals("The uppper bound of -2 and 2 after shift of -2.5 should be -0.5", -0.5, shiftRange.getUpperBound(), 0.1);
     }
 
-<<<<<<< HEAD
-    //Shift Test
+
+    //Shift Test - Apostolos
     @Test //positive shift correctly changes the lower bound 
-=======
-    //Shift Test -Apostolos
-    @Test
->>>>>>> dbaad4ed3813d242942899a04e3765096e24d377
     public void positiveShiftValueLowerBoundCheck() {
     	Range shiftRange = new Range(-2, 2);
     	double delta = 2.0;
@@ -149,13 +133,9 @@ public class RangeTest {
     	assertEquals("The lower bound of -2 and 2 after shift of 2.0 should be 0", 0, shiftRange.getLowerBound(), 0.1);
     }
 
-<<<<<<< HEAD
-    //Shift Test
-    @Test //positive shift correctly changes the upper bound 
-=======
+
     //Shift Test - Apostolos
-    @Test
->>>>>>> dbaad4ed3813d242942899a04e3765096e24d377
+    @Test //positive shift correctly changes the upper bound 
     public void positiveShiftValueUpperBoundCheck() {
     	Range shiftRange = new Range(-2, 2);
     	double delta = 2.0;
@@ -163,13 +143,8 @@ public class RangeTest {
     	assertEquals("The upper bound of -2 and 2 after shift of 2 should be 4.0", 4.0, shiftRange.getUpperBound(), 0.1);
     }
     
-<<<<<<< HEAD
-    //Shift Test
-    @Test //shifting with delta value 0 will not change the range bounds
-=======
     //Shift Test - Apostolos
-    @Test
->>>>>>> dbaad4ed3813d242942899a04e3765096e24d377
+    @Test //shifting with delta value 0 will not change the range bounds
     public void zeroShiftValueLowerBoundCheck() {
     	Range shiftRange = new Range(-2, 2);
     	double delta = 0.0;
@@ -177,13 +152,8 @@ public class RangeTest {
     	assertEquals("The lower bound of -2 and 2 after shift of 0 should be -2.0", -2.0, shiftRange.getLowerBound(), 0.1);
     }
 
-<<<<<<< HEAD
-    //Shift Test
-    @Test //shifting with delta = 0 will not change the range bounds
-=======
     //Shift Test - Apostolos
-    @Test
->>>>>>> dbaad4ed3813d242942899a04e3765096e24d377
+    @Test //shifting with delta = 0 will not change the range bounds
     public void zeroShiftValueUpperBoundCheck() {
     	Range shiftRange = new Range(-2, 2);
     	double delta = 0.0;
@@ -191,27 +161,16 @@ public class RangeTest {
     	assertEquals("The upper bound of -2 and 2 after shift of 0 should be 2.0", 2.0, shiftRange.getUpperBound(), 0.1);
     }
     
-<<<<<<< HEAD
-    //Shift Test
+
+    //Shift Test- Apostolos
     @Test(expected = IllegalArgumentException.class) //delta == null should throw an exception
-=======
-    //Shift Test - Apostolos
-    @Test(expected = IllegalArgumentException.class)
->>>>>>> dbaad4ed3813d242942899a04e3765096e24d377
     public void nullRangeShiftCheck() {
     	Range shiftRange = null;
     	double delta = 2.0;
     	Range.shift(shiftRange, delta);
     }
+  
     
-<<<<<<< HEAD
-    
-    
-    /*toString test - simple functionality of this method merits less testing, so the conversion of a positive and negative double 
-    	is all that  is needed */
-    @Test //test that the toString method properly converts a double to a string and formats as described
-    public void toStringCheck() {
-=======
     //Shift Test - Apostolos
     @Test
     public void naximumPositiveShiftUpperBoundaryCheck() {
@@ -220,10 +179,12 @@ public class RangeTest {
     	Range.shift(shiftRange, delta);
     	assertEquals("Expected Upper Bound is the largest possible double", Double.longBitsToDouble(0x7fefffffffffffffL), shiftRange.getUpperBound(), .0000000001d);
     }
-    
+	
+	
+	/*toString test - simple functionality of this method merits less testing, so the conversion of a positive and negative double 
+	is all that  is needed */
     //toString test -Apostolos
     @Test public void toStringCheck() {
->>>>>>> dbaad4ed3813d242942899a04e3765096e24d377
     	Range testRange = new Range(-5.0, 5.0);
     	assertEquals("Expected toString result was not met. ", "Range[-5.0,5.0]",testRange.toString());
     }
