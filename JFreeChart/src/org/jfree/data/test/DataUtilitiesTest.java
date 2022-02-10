@@ -20,6 +20,7 @@ public class DataUtilitiesTest {
 
     }
     
+    //Haniya
     //Test with equals 2 double arrays that are equal
     @Test  
    public void checkEqualArrays() {
@@ -38,6 +39,7 @@ public class DataUtilitiesTest {
          Assert.assertFalse("Expected result is False", actualResult);
      }
     
+     //Haniya
     //test two null arrays
     @Test  
     public void checkNullArrays() {
@@ -47,6 +49,7 @@ public class DataUtilitiesTest {
          Assert.assertTrue("Expected result is True", actualResult);
      }
     
+    //Haniya
     //test one null array and one not null array
     @Test  
     public void checkNullWithNotNullArrays() {
@@ -228,6 +231,7 @@ public class DataUtilitiesTest {
         //exception expected
     }
     
+    //Haniya
     //passing a null object into createNumberArray2D
     @Test
 	public void nullObjectTo2DArrayTest() {
@@ -242,6 +246,7 @@ public class DataUtilitiesTest {
 		}
 	}
     
+    //Haniya
     //pass an empty doubles array
     @Test
 	public void empty2DArrayTest() {
@@ -251,16 +256,18 @@ public class DataUtilitiesTest {
 		assertArrayEquals("The Number 2D array produce by DataUtilities does not match the empty, expected Number 2D Array", expected, actual);
 	}
     
+    //Haniya
   //testing more than 17 decimal places which a Number class can't handle
     @Test
 	public void moreThan17DecimalPlaces2DArrayTest() {
 		double [][] test = {{15.1234567890123456789}};
-		Number [][] expected = {{15.1234567890123456789}};
+		Number [][] expected = {{15.12345678901234567}};
 		Number [][] actual = DataUtilities.createNumberArray2D(test);
 		assertArrayEquals("The Number 2D array produce by DataUtilities does not match the expected Number 2D Array with more than"
 				+ "17 decimal places", expected, actual);
 	}
     
+    //Haniya
     //passing a ten by one double array to createNumberArray2D
     @Test
 	public void tenByOne2DArrayTest() {
@@ -271,6 +278,7 @@ public class DataUtilitiesTest {
 	, expected, actual);
 	}
     
+    //Haniya
     //passing a one by ten double array to createNumberArray2D
     @Test
 	public void oneByTen2DArrayTest() {
