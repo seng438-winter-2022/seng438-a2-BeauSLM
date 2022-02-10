@@ -79,6 +79,30 @@ public class DataUtilitiesTest {
     }
     
     @Test
+    public void calculateColumnTotalForThreeNegativeValues() {
+        // setup
+        Mockery mockingContext = new Mockery();
+        final Values2D values = mockingContext.mock(Values2D.class);
+        mockingContext.checking(new Expectations() {
+            {
+                one(values).getRowCount();
+                will(returnValue(3));
+                one(values).getValue(0, 0);
+                will(returnValue(-25.5));
+                one(values).getValue(1, 0);
+                will(returnValue(-53));
+                one(values).getValue(2, 0);
+                will(returnValue(-5));
+            }
+        });
+        // exercise 
+        double result = DataUtilities.calculateColumnTotal(values, 0);
+        // verify
+        assertEquals(result, -83.5, .000000001d);
+        // tear-down: NONE in this test method
+    }
+    
+    @Test
     public void calculateColumnTotalForTwoValidRows() {
         // setup
         Mockery mockingContext = new Mockery();
@@ -102,9 +126,9 @@ public class DataUtilitiesTest {
         assertEquals(result, 10.0, .000000001d);
         // tear-down: NONE in this test method
     }
-    
+
     @Test
-    public void calculateRowTotalForTwoValues() {
+    public void calculateRowTotalForTwoNegativeValues() {
         // setup
         Mockery mockingContext = new Mockery();
         final Values2D values = mockingContext.mock(Values2D.class);
@@ -113,15 +137,15 @@ public class DataUtilitiesTest {
                 one(values).getColumnCount();
                 will(returnValue(2));
                 one(values).getValue(0, 0);
-                will(returnValue(7.5));
+                will(returnValue(-17.5));
                 one(values).getValue(0, 1);
-                will(returnValue(2.5));
+                will(returnValue(-12.5));
             }
         });
         // exercise 
         double result = DataUtilities.calculateRowTotal(values, 0);
         // verify
-        assertEquals(result, 10.0, .000000001d);
+        assertEquals(result, -30.0, .000000001d);
         // tear-down: NONE in this test method
     }
     
@@ -149,6 +173,30 @@ public class DataUtilitiesTest {
         assertEquals(result, 10.0, .000000001d);
         // tear-down: NONE in this test method
     }
+    
+    @Test(expected=Exception.class)
+    public void calculateRowTotalNullArray() {
+        // setup
+        Mockery mockingContext = new Mockery();
+        final Values2D values = mockingContext.mock(Values2D.class);
+        mockingContext.checking(new Expectations() {
+            {
+                one(values).getColumnCount();
+                will(returnValue(3));
+                one(values).getValue(0, 0);
+                will(returnValue(7.5));
+                one(values).getValue(0, 1);
+                will(returnValue(2.5));
+                one(values).getValue(0, 2);
+                will(returnValue(2.5));
+            }
+        });
+        int []arr = null;
+        double result = DataUtilities.calculateRowTotal(values, 0, arr);
+        // verify
+        //exception expected
+    }
+    
     
     //passing a null object into createNumberArray2D
     @Test
