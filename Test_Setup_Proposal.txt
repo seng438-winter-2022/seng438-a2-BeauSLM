@@ -103,3 +103,22 @@ Data Utilities Test Plan :
 	-pass in a doubles array
 		Returns a corressponding Number array
 	
+- calculateColumnTotal(Values2D data, int column, int[] validRows)
+    - pass in a populated Values2D mock, column and validRows specify real rows/cols in the mock
+        Expecting the correct sum
+    - pass null in for the array
+        - should not be accepted, throws an exception
+
+- calculateRowTotal(Values2D data, int column, int[] validCols)
+    - pass legitimate parameters
+        Expecting the correct sum
+    - pass null in for the array
+        should not be accepted, throws an exception
+
+- calculateRowTotal(Values2D data, int column)
+    - pass legitimate parameters
+        Expecting the correct sum
+
+- calculateColumnTotal(Values2D data, int row)
+    - pass legitimate parameters
+        Expecting the correct sum
