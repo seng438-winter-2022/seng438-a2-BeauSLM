@@ -230,7 +230,7 @@ public class DataUtilitiesTest {
         //exception expected
     }
     
-    //josh
+    //josh 
     @Test(expected=Exception.class)
     public void calculateColumnNullRowsArray() {
         // setup
