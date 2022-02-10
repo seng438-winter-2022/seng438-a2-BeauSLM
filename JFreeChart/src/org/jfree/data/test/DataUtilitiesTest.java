@@ -59,7 +59,7 @@ public class DataUtilitiesTest {
      }
     
     //calculate Column Test(Beau) - Values
-    @Test
+    @Test //calculate column total for two columns
     public void calculateColumnTotalForTwoValues() {
         // setup
         Mockery mockingContext = new Mockery();
@@ -82,7 +82,7 @@ public class DataUtilitiesTest {
     }
     
     //calculate column test (Apostolos) - Values
-    @Test
+    @Test //calc row total for 2 rows 
     public void calculateRowTotalForTwoValues() {
         // setup
         Mockery mockingContext = new Mockery();
@@ -105,7 +105,7 @@ public class DataUtilitiesTest {
     }
     
     //Calculate column test (Beau) - Rows
-    @Test
+    @Test //calc row total for two specific rows 
     public void calculateColumnTotalForTwoValidRows() {
         // setup
         Mockery mockingContext = new Mockery();
@@ -131,7 +131,7 @@ public class DataUtilitiesTest {
     }
     
     //Calculate Rows (Apostolos) Values
-    @Test
+    @Test //calc row total using two negative values 
     public void calculateRowTotalForTwoNegativeValues() {
         // setup
         Mockery mockingContext = new Mockery();
@@ -155,7 +155,7 @@ public class DataUtilitiesTest {
     
     
     //Calculate Rows (Beau) for Columns
-    @Test
+    @Test //calc row total for two specific rows 
     public void calculateRowTotalForTwoValidColumns() {
         // setup
         Mockery mockingContext = new Mockery();
@@ -181,7 +181,7 @@ public class DataUtilitiesTest {
     }
     
     //calculate Row Total with a null Array (Apostolos) - Exception
-    @Test(expected=Exception.class)
+    @Test(expected=Exception.class) //null array should throw an exception
     public void calculateRowTotalNullArray() {
         // setup
         Mockery mockingContext = new Mockery();
@@ -204,8 +204,9 @@ public class DataUtilitiesTest {
         //exception expected
     }
     
+	//calc column total for a null array 
     //josh 
-    @Test(expected=Exception.class)
+    @Test(expected=Exception.class) //null array should throw an exception 
     public void calculateColumnNullRowsArray() {
         // setup
         Mockery mockingContext = new Mockery();
@@ -290,7 +291,7 @@ public class DataUtilitiesTest {
 	}
     
     //Calculate row Total (Beau) - Values
-    @Test
+    @Test //calc row total for three values 
     public void calculateRowTotalForThreeValues() {
         // setup
         Mockery mockingContext = new Mockery();
@@ -315,7 +316,7 @@ public class DataUtilitiesTest {
     }
     
     //calculate column (Beau) Values
-    @Test
+    @Test //calculate col total for three values 
     public void calculateColumnTotalForThreeValues() {
         // setup
         Mockery mockingContext = new Mockery();
@@ -339,12 +340,9 @@ public class DataUtilitiesTest {
         // tear-down: NONE in this test method
     }
 
-    @After
-    public void tearDown() throws Exception {
-    }
 
     //calculate column test (Apostolos) - Values
-	@Test
+	@Test //column total with negative values 
 	public void calculateColumnTotalForThreeNegativeValues() {
 	    // setup
 	    Mockery mockingContext = new Mockery();
@@ -367,6 +365,10 @@ public class DataUtilitiesTest {
 	    assertEquals(result, -83.5, .000000001d);
 	    // tear-down: NONE in this test method
 	}
+	
+	    @After
+    public void tearDown() throws Exception {
+    }
 
 	@AfterClass
     public static void tearDownAfterClass() throws Exception {
