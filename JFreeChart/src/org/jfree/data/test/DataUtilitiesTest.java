@@ -14,13 +14,19 @@ import org.junit.Test;
 
 public class DataUtilitiesTest {
 
+	
+	// we don't have anything in the setUp classes as we don't have static sample data or data that was reused throughout this test class
+    @BeforeClass public static void setUpBeforeClass() throws Exception {
+    }
+	
     @Before
-    public void setUp() throws Exception { 
-
+    public void setUp() throws Exception {
     }
     
-    //Haniya
-    //Test with equals 2 double arrays that are equal
+    //By: Haniya
+    //equal(double[][] a, double[][]b) method
+    //Equivalence test (legal value) with equals 2 double arrays that are equal
+    //Expected outcome: true
     @Test  
    public void checkEqualArrays() {
     	double a[][] = {{5, 2, 3, 4,}, {2, 1, -5, 1}, {-7,-100, 0}};
@@ -29,7 +35,10 @@ public class DataUtilitiesTest {
     	Assert.assertTrue("Expected result is True", actualResutl);
     }
     
-    //Test 2 unequal arrays - Apostolos
+    //By: Apostolos
+    //equal(double[][] a, double[][]b) method
+    //Equivalence test (legal value) with equals 2 double arrays that are unequal
+    //Expected outcome: false
      @Test  
     public void checkNotEqualArrays() {
          double a[][] = {{1, 8, -2, 5}, {1, 16, 13, 2}, {13, -7, 8, 4}};
@@ -38,8 +47,10 @@ public class DataUtilitiesTest {
          Assert.assertFalse("Expected result is False", actualResult);
      }
     
-     //Haniya
-    //test two null arrays
+    //By: Haniya
+    //equal(double[][] a, double[][]b) method
+    //Boundary test with equals; 2 double arrays that are null
+    //Expected outcome: true
     @Test  
     public void checkNullArrays() {
          double a[][] = null;
@@ -48,8 +59,10 @@ public class DataUtilitiesTest {
          Assert.assertTrue("Expected result is True", actualResult);
      }
     
-    //Haniya
-    //test one null array and one not null array
+    //By: Haniya
+    //equal(double[][] a, double[][]b) method
+    //Boundary test with equals; 1 null double array and one not-null double array
+    //Expected outcome: false
     @Test  
     public void checkNullWithNotNullArrays() {
          double a[][] = null;
@@ -58,8 +71,11 @@ public class DataUtilitiesTest {
          Assert.assertFalse("Expected result is False", actualResult);
      }
     
-    //calculate Column Test(Beau) - Values
-    @Test //calculate column total for two columns
+    //By: Beau
+    //calculateColumnTotal(Values2D data, int column) method
+    //Equivalence test using mocking (legal value); calculating column total for two columns
+    //Expected outcome: 10.0
+    @Test 
     public void calculateColumnTotalForTwoValues() {
         // setup
         Mockery mockingContext = new Mockery();
@@ -81,8 +97,11 @@ public class DataUtilitiesTest {
         // tear-down: NONE in this test method
     }
     
-    //calculate column test (Apostolos) - Values
-    @Test //calc row total for 2 rows 
+    //By: Apostolos
+    //calculateRowTotal(Values2D data, int row) method
+    //Equivalence test using mocking (legal value); calculating row total for two rows
+    //Expected outcome: 10.0
+    @Test 
     public void calculateRowTotalForTwoValues() {
         // setup
         Mockery mockingContext = new Mockery();
@@ -104,8 +123,11 @@ public class DataUtilitiesTest {
         // tear-down: NONE in this test method
     }
     
-    //Calculate column test (Beau) - Rows
-    @Test //calc row total for two specific rows 
+    //By: Beau
+    //calculateColumnTotal(Values2D data, int column, int[] ValidRows) method
+    //Equivalence test using mocking (legal value); calculating row total for two specific rows
+    //Expected outcome: 10.0
+    @Test 
     public void calculateColumnTotalForTwoValidRows() {
         // setup
         Mockery mockingContext = new Mockery();
@@ -130,8 +152,11 @@ public class DataUtilitiesTest {
         // tear-down: NONE in this test method
     }
     
-    //Calculate Rows (Apostolos) Values
-    @Test //calc row total using two negative values 
+    //By: Apostolos
+    //calculateRowTotal(Values2D data, int row) method
+    //Equivalence test using mocking (legal value); calculating row total using two negative values
+    //Expected outcome: -30.0
+    @Test 
     public void calculateRowTotalForTwoNegativeValues() {
         // setup
         Mockery mockingContext = new Mockery();
@@ -154,8 +179,11 @@ public class DataUtilitiesTest {
     }
     
     
-    //Calculate Rows (Beau) for Columns
-    @Test //calc row total for two specific rows 
+    //By: Beau
+    //calculateRowTotal(Values2D data, int row, int[] validCols) method
+    //Equivalence test using mocking (legal value); calculating row total for two specific rows
+    //Expected outcome: 10.0
+    @Test 
     public void calculateRowTotalForTwoValidColumns() {
         // setup
         Mockery mockingContext = new Mockery();
@@ -180,7 +208,10 @@ public class DataUtilitiesTest {
         // tear-down: NONE in this test method
     }
     
-    //calculate Row Total with a null Array (Apostolos) - Exception
+    //By: Apostolos
+    //calculateRowTotal(Values2D data, int row, int[] validCols) method
+    //Equivalence test using mocking (illegal value); calculating row total with null arrays
+    //Expected outcome: Exception is thrown
     @Test(expected=Exception.class) //null array should throw an exception
     public void calculateRowTotalNullArray() {
         // setup
@@ -204,8 +235,11 @@ public class DataUtilitiesTest {
         //exception expected
     }
     
-	//calc column total for a null array 
-    //josh 
+	
+    //By: Josh
+    //calculateColumnTotal(Values2D data, int column, int[] ValidRows) method
+    //Equivalence test using mocking (illegal value); passing in null arrays for calculating column total
+    //Expected outcome: Exception is thrown
     @Test(expected=Exception.class) //null array should throw an exception 
     public void calculateColumnNullRowsArray() {
         // setup
@@ -227,9 +261,11 @@ public class DataUtilitiesTest {
         double result = DataUtilities.calculateColumnTotal(values, 0, arr);
         // no teardown
     }
-    
-    //Haniya
-    //passing a null object into createNumberArray2D
+	
+    //By: Haniya
+    //createNumberArray2D(double [][]) : Number [][] method
+    //Equivalence test (illegal value); passing in a null object to turn into a 2D Number array
+    //Expected outcome: Exception is thrown
     @Test
 	public void nullObjectTo2DArrayTest() {
 		boolean testPassed = false;
@@ -245,8 +281,10 @@ public class DataUtilitiesTest {
 	}
     
     //Number is a serialized object we test. Holds any type of numbers you wish to pass. (Abstract -> java lang Interface)
-    //Haniya
-    //pass an empty doubles array
+    //By: Haniya
+    //createNumberArray2D(double [][]) : Number [][] method
+    //Boundary testing with least number of possible elements; passing in an empty 2D double array to turn into a Number array
+    //Expected outcome: an empty Number array
     @Test
 	public void empty2DArrayTest() {
 		double [][] test = {};
@@ -254,21 +292,25 @@ public class DataUtilitiesTest {
 		Number [][] actual = DataUtilities.createNumberArray2D(test);
 		assertArrayEquals("The Number 2D array produce by DataUtilities does not match the empty, expected Number 2D Array", expected, actual);
 	}
-    
-    //Haniya
-  //testing more than 17 decimal places which a Number class can't handle
+   
+    //By: Haniya
+    //createNumberArray2D(double [][]) : Number [][] method
+    //Boundary testing with most number of decimal places allowed in a 2D Number array (17); passing in a 2D double array with more than 17 decimal places
+    //Expected outcome: a Number array that cuts off extra decimal places
     @Test
 	public void moreThan17DecimalPlaces2DArrayTest() {
     	//Last 2 digits get chopped - can't be stored.
-		double [][] test = {{15.1234567890123456789}};
-		Number [][] expected = {{15.12345678901234567}};
+		double [][] test = {{15.1234567890123456789}}; 
+		Number [][] expected = {{15.12345678901234567}}; //last two decimal places are cut off
 		Number [][] actual = DataUtilities.createNumberArray2D(test);
 		assertArrayEquals("The Number 2D array produce by DataUtilities does not match the expected Number 2D Array with more than"
 				+ "17 decimal places", expected, actual);
 	}
-    
-    //Haniya
-    //passing a ten by one double array to createNumberArray2D
+	
+    //By: Haniya
+    //createNumberArray2D(double [][]) : Number [][] method
+    //Equivalence test (legal value); passing in a 2D double array with 1 row and 10 columns
+    //Expected outcome: a converted Number array
     @Test
 	public void tenByOne2DArrayTest() {
 		double [][] test = {{15.78282},{-15.78282},{15.78282},{15.78282},{15.78282},{15.78282},{15.78282},{15.78282},{15.78282},{15.78282}};
@@ -278,8 +320,10 @@ public class DataUtilitiesTest {
 	, expected, actual);
 	}
     
-    //Haniya
-    //passing a one by ten double array to createNumberArray2D
+    //By: Haniya
+    //createNumberArray2D(double [][]) : Number [][] method
+    //Equivalence test (legal value); passing in a 2D double array with 10 rows and 1 column
+    //Expected outcome: a converted Number array
     @Test
 	public void oneByTen2DArrayTest() {
     	
@@ -290,7 +334,10 @@ public class DataUtilitiesTest {
 	, expected, actual);
 	}
     
-    //Calculate row Total (Beau) - Values
+    //By: Beau
+    //calculateRowTotal(Values2D data, int row) method
+    //Equivalence test using mocking (illegal value); calculating row total for three values
+    //Expected outcome: 12.5
     @Test //calc row total for three values 
     public void calculateRowTotalForThreeValues() {
         // setup
@@ -315,7 +362,10 @@ public class DataUtilitiesTest {
         // tear-down: NONE in this test method
     }
     
-    //calculate column (Beau) Values
+    //By: Beau
+    //calculateColumnTotal(Values2D data, int column) method
+    //Equivalence test using mocking (illegal value); calculating column total for three values
+    //Expected outcome: 12.5
     @Test //calculate col total for three values 
     public void calculateColumnTotalForThreeValues() {
         // setup
@@ -341,7 +391,10 @@ public class DataUtilitiesTest {
     }
 
 
-    //calculate column test (Apostolos) - Values
+    //By: Apostolos
+    //calculateColumnTotal(Values2D data, int column) method
+    //Equivalence test using mocking (illegal value); calculating column total for two negative values
+    //Expected outcome: -83.5
 	@Test //column total with negative values 
 	public void calculateColumnTotalForThreeNegativeValues() {
 	    // setup
